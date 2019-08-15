@@ -53,11 +53,15 @@ bcrypt.compare(password, hashedpassword).then(isMatch => {
    if (isMatch) {
       res.status(200).json(isMatch);
     console.log("matchedpassword")
-   }
+        }
+        else {
+          res.status(404).send("Incorrect details")
+        }
+      })
+        .catch(err => res.status(404).send("Incorrect details"));
 
-    })
-    .catch(err => res.status(404).json(err));
-})});
+    }).catch(err => res.status(404).send("Incorrect details"));
+});
 
 
 
