@@ -1,29 +1,29 @@
 const express = require("express");
 const router = express.Router();
 const _ = require("lodash");
-const Item = require("../models/mongoschema.js");
-const validateusername = require("../validation/modelsvalidation");
+const User = require("../models/user.js");
+const validateusername = require("../validation/user");
 const bcrypt = require("bcryptjs");
 
 
 
 //create
-router.post("/addItem", (req, res) => {
+router.post("/addUser", (req, res) => {
   const { errors, isValid } = validateusername(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
   }
   
 
-  const item = new Item({
+  const user = new User({
     username: req.body.username,
     password: req.body.password
   });
  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(item.password, salt, (err, hash) => {
+    bcrypt.hash(user.password, salt, (err, hash) => {
       if (err) throw err;
-      item.password = hash;
-      item.save().then(item => res.json(item))
+      user.password = hash;
+      user.save().then(user => res.json(user))
       .catch(err => console.log(err));
    });
 
@@ -40,13 +40,13 @@ router.post("/username", (req, res) => {
   const password = req.body.password;
       let hashedpassword;
 
-  Item.findOne({ username: req.body.username})
-    .then(items => {
-      console.log(items);
-      hashedpassword=items.password;
+  User.findOne({ username: req.body.username})
+    .then(users => {
+      console.log(users);
+      hashedpassword=users.password;
       console.log(password);
       console.log(hashedpassword);
-      if (!items) {
+      if (!users) {
         res.status(404).json(errors);
       }
 bcrypt.compare(password, hashedpassword).then(isMatch => {

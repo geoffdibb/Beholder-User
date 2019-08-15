@@ -1,17 +1,17 @@
 const isEmpty = require("./isempty.js");
 const Validator = require("validator");
 
-module.exports = function validateusername(Item) {
+module.exports = function validateusername(User) {
     let errors = {};
 
 
-    Item.username = !isEmpty(Item.username) ? Item.username : "";
+    User.username = !isEmpty(User.username) ? User.username : "";
 
-    if (!Validator.isAlphanumeric(Item.username)) {
+    if (!Validator.isAlphanumeric(User.username)) {
         errors.username = "username is invalid";
     }
 
-    if (Validator.isEmpty(Item.username)) {
+    if (Validator.isEmpty(User.username)) {
         errors.username = "username is required";
     }
 
