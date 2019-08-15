@@ -6,14 +6,16 @@ const mongoose = require("mongoose");
 const user = require("./routes/user");
 
 
-let uri = 'mongodb://localhost:27017/example';
+let uri = 'mongodb://localhost:27017/UserDatabase';
 let opts ={useNewUrlParser: true};
 
+const db = require("./config/keys").mongoURI;
 
-mongoose.connect(uri, opts).then(
-    () => { console.log("works")},
-    (err) => { console.log(err) }
-)
+
+mongoose
+  .connect(db)
+  .then(() => console.log("Connected to MongoDB"))
+  .catch(err => console.log(err));
 
 
 app.use(bodyParser.urlencoded({ extended: false}));

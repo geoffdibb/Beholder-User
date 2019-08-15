@@ -42,10 +42,7 @@ router.post("/username", (req, res) => {
 
   User.findOne({ username: req.body.username})
     .then(users => {
-      console.log(users);
       hashedpassword=users.password;
-      console.log(password);
-      console.log(hashedpassword);
       if (!users) {
         res.status(404).json(errors);
       }
