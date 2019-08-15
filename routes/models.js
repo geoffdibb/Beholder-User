@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const _ = require("lodash");
-const Item = require("./Schema/mongoschema.js");
-const validateusername = require("./modelsvalidation");
+const Item = require("../models/mongoschema.js");
+const validateusername = require("../validation/modelsvalidation");
 const bcrypt = require("bcryptjs");
 
 
