@@ -49,15 +49,15 @@ router.post("/username", (req, res) => {
       }
 bcrypt.compare(password, hashedpassword).then(isMatch => {
    if (isMatch) {
-      res.status(200).json(isMatch);
+      res.status(200).send("isMatch");
         }
         else {
-          res.status(404).send("Incorrect details")
+          res.status(200).send("Incorrect details")
         }
       })
-        .catch(err => res.status(404).send("Incorrect details"));
+        .catch(err => res.status(200).send("User not found"));
 
-    }).catch(err => res.status(404).send("Incorrect details"));
+    }).catch(err => res.status(200).send("Unable to connect to database"));
 });
 
 
