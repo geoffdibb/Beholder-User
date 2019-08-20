@@ -21,7 +21,7 @@ mongoose
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-app.use("/routes/user", user);
+app.use("", user);
 
 const port = process.env.PORT || 5000;
 
