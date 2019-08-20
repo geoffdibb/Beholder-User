@@ -14,7 +14,6 @@ router.post("/addUser", (req, res) => {
     return res.status(400).json(errors);
   }
   
-
   const user = new User({
     username: req.body.username,
     password: req.body.password
