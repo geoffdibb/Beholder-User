@@ -7,14 +7,15 @@ const bcrypt = require("bcryptjs");
 
 
 
-//create
+// @route   POST /addUser
+// @desc    Create user
+// @access  Private
 router.post("/addUser", (req, res) => {
   const { errors, isValid } = validateusername(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
   }
   
-
   const user = new User({
     username: req.body.username,
     password: req.body.password
@@ -32,7 +33,7 @@ router.post("/addUser", (req, res) => {
 
 
 
-// @route   GET item/username
+// @route   GET /username
 // @desc    Get all items from one username
 // @access  Public
 router.post("/username", (req, res) => {
@@ -48,15 +49,15 @@ router.post("/username", (req, res) => {
       }
 bcrypt.compare(password, hashedpassword).then(isMatch => {
    if (isMatch) {
-      res.status(200).json(isMatch);
+      res.status(200).send("isMatch");
         }
         else {
-          res.status(404).send("Incorrect details")
+          res.status(200).send("Incorrect details")
         }
       })
-        .catch(err => res.status(404).send("Incorrect details"));
+        .catch(err => res.status(200).send("User not found"));
 
-    }).catch(err => res.status(404).send("Incorrect details"));
+    }).catch(err => res.status(200).send("Unable to connect to database"));
 });
 
 
