@@ -7,7 +7,9 @@ const bcrypt = require("bcryptjs");
 
 
 
-//create
+// @route   POST /addUser
+// @desc    Create user
+// @access  Private
 router.post("/addUser", (req, res) => {
   const { errors, isValid } = validateusername(req.body);
   if (!isValid) {
@@ -31,7 +33,7 @@ router.post("/addUser", (req, res) => {
 
 
 
-// @route   GET item/username
+// @route   GET /username
 // @desc    Get all items from one username
 // @access  Public
 router.post("/username", (req, res) => {

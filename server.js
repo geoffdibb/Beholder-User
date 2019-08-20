@@ -5,8 +5,6 @@ const mongoose = require("mongoose");
 
 const user = require("./routes/user");
 
-
-let uri = 'mongodb://localhost:27017/UserDatabase';
 let opts ={useNewUrlParser: true};
 
 const db = require("./config/keys").mongoURI;
