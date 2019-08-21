@@ -5,16 +5,18 @@ const User = require("../models/user");
 
 
 module.exports = (app) => {
-  app.get('/findUser', (req, res, next) => {
+  app.get('/findUser/:username', (req, res, next) => {
     passport.authenticate('jwt', { session: false }, (err, user, info) => {
       if (err) {
         console.log(err);
       }
+    console.log(user.username);
+    console.log(req.params.username);
       if (info !== undefined) {
         console.log(info.message);
         res.status(401).send(info.message);
-      } else if (user.username === req.query.username) {
-        User.findOne({username: req.query.username}).then((userInfo) => {
+      } else if (user.username === req.params.username) {
+        User.findOne({username: req.params.username}).then((userInfo) => {
           if (userInfo != null) {
             console.log('user found in db from findUsers');
             res.status(200).send({
