@@ -49,7 +49,7 @@ router.post("/username", (req, res) => {
       }
 bcrypt.compare(password, hashedpassword).then(isMatch => {
    if (isMatch) {
-      res.status(200).send("isMatch");
+      res.status(200).send("user logged in ");
         }
         else {
           res.status(200).send("Incorrect details")
