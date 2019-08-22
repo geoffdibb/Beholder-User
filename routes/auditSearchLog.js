@@ -18,11 +18,9 @@ module.exports = (app) => {
             } else if (user.username === req.params.username) {
                 
                 console.log(req.params.username )
-                axios.get("http://localhost:8083/getSearchLog/" + req.params.username)
-                    .then(Response => {
-                        //something to do with pushing data to the front end
-                        
-                        res.status(200).send('it worked!!!!!!!!');
+                axios.get("http://localhost:8083/beholder/getSearchLogs/" + req.params.username)
+                    .then(response => {
+                        res.status(200).send(response.data);
                     })
                     .catch(err => {
                         console.log(err);
