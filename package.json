@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "node server.js"
+    "server": "node server.js",
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
@@ -33,5 +34,8 @@
     "swagger-jsdoc": "^3.2.9",
     "swagger-ui-express": "^4.0.2",
     "validator": "^11.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.0"
   }
 }
