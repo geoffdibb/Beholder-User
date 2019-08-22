@@ -1,0 +1,134 @@
+{
+	"info": {
+		"_postman_id": "5700a579-2738-4897-9fd4-5434659cbcd2",
+		"name": "BAE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:5001/getauditrequestlog/Bert",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "08550ebc-4058-4f98-a72a-c348a595824d",
+						"exec": [
+							"// example using pm.response.to.have\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"// example using response assertions\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.be.error;\r",
+							"});\r",
+							"\r",
+							"// // example using pm.response.to.be*\r",
+							"// pm.test(\"response must be valid and have a body\", function () {\r",
+							"//      pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"//      // assert that the response has a valid JSON body\r",
+							"//      pm.response.to.be.withBody;\r",
+							"//      pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"// });"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"admin1\",\n\t\"password\": \"password\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5001/getauditrequestlog/Bert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"getauditrequestlog",
+						"Bert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5001/registerUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c85fa21c-ca65-4668-87f2-9b429d18decc",
+						"exec": [
+							"// example using pm.response.to.have\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// example using response assertions\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.not.be.error;\r",
+							"    pm.response.to.have.jsonBody({ message: 'user created' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"// example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"ber3tgggy\",\n\t\"password\": \"password\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5001/registerUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"registerUser"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
