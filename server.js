@@ -8,8 +8,6 @@ const passport = require("passport");
 
 require("./config/passport");
 
-const user = require("./routes/user");
-
 let opts ={useNewUrlParser: true};
 
 const db = require("./config/keys").mongoURI;
@@ -23,6 +21,10 @@ app.use(passport.initialize());
 require('./routes/loginUser')(app);
 require('./routes/registerUser')(app);
 require('./routes/findUsers')(app);
+require('./routes/search')(app);
+require('./routes/auditSearchLog')(app);
+require('./routes/auditUserAccessLog')(app);
+require('./routes/auditRequestlog')(app);
 
 mongoose
   .connect(db)
@@ -33,7 +35,7 @@ mongoose
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-app.use("", user);
+
 
 const port = process.env.PORT || 5000;
 
