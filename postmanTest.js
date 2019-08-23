@@ -1,35 +1,29 @@
 const newman = require('newman');
 const collection = require('./postmanCollection.json')
-
-newman.run({
-    collection:
-    require('./postman.json'), reporters: 'cli',
-})
-
-
 const treeify = require('treeify');
-const { app } = require('../../app/server');
-const collection = require('../collections/collection.json');
+const { app } = require('./server');
 // const environment = require('../collections/environment.json');
 
-const port = 3333;
-environment.values[0].value = `http://localhost:${port}/api/v1`;
+// newman.run({
+//     collection:
+//     require('./postman.json'), reporters: 'cli',
+// })
 
-const server = app.listen(
-  port,
-  () => {
-    console.log(`Test server listing at port ${port}`);
-  },
-);
+// const server = app.listen(
+//   port,
+//   () => {
+//     console.log(`Test server listing at port ${port}`);
+//   },
+// );
 
 newman.run({
   collection,
-  environment,
+//   environment,
   color: true,
   reporters: ['cli']
 }).on('start', (err, args) => {
 }).on('done', (err, summary) => {
-  server.close(() => console.log('Test server Terminated'));
+//   server.close(() => console.log('Test server Terminated'));
   if (err || summary.run.failures.length) {
     const failureCount = summary.run.failures.length;
     summary.run.failures.forEach((element, index) => {

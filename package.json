@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "server": "node server.js",
-    "test": "mocha"
+    "test": "node postmanTest.js",
+    "coverage": "nyc npm run test"
   },
   "author": "",
   "license": "ISC",
@@ -37,9 +38,11 @@
     "passport-local": "^1.0.0",
     "swagger-jsdoc": "^3.2.9",
     "swagger-ui-express": "^4.0.2",
+    "treeify": "^1.1.0",
     "validator": "^11.1.0"
   },
   "devDependencies": {
-    "mocha": "^6.2.0"
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1"
   }
 }

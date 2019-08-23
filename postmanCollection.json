@@ -114,7 +114,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\": \"ber3tgggy\",\n\t\"password\": \"password\"\n}"
+					"raw": "{\n\t\"username\": \"bexwtrhcexthehy\",\n\t\"password\": \"password\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:5001/registerUser",
