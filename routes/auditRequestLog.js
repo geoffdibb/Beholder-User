@@ -14,11 +14,11 @@ module.exports = (app) => {
                         res.status(200).send(response.data);
                     })
                     .catch(err => {
-                        res.status(501).send('cannot connect to api');
+                        res.status(501).send('Unable to connect to Beholder Audit API');
                     })
             } else {
-                console.error('username and jwt token do not match');
-                res.status(403).send('username and jwt token do not match');
+                console.error('Username and jwt token do not match');
+                res.status(403).send('Username and jwt token do not match');
             }
         })(req, res, next);
     });

@@ -14,16 +14,16 @@ module.exports = (app) => {
               auth: true,
               username: userInfo.username,
               password: userInfo.password,
-              message: 'user found in db',
+              message: 'User found',
             });
           } else {
-            console.error('no user exists in db with that username');
-            res.status(401).send('no user exists in db with that username');
+            console.error('User does not exist with that username');
+            res.status(401).send('User does not exist with that username');
           }
         });
       } else {
-        console.error('username and jwt token do not match');
-        res.status(403).send('username and jwt token do not match');
+        console.error('Username and jwt token do not match');
+        res.status(403).send('Username and jwt token do not match');
       }
     })(req, res, next);
   });

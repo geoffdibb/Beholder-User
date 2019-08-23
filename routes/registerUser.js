@@ -20,8 +20,7 @@ module.exports = app => {
           console.log(data);
           User.findOne({ username: data.username })
             .then(() => {
-              console.log('user created in db');
-              res.status(200).send({ message: 'user created' });
+              res.status(200).send({ message: 'User has been created' });
 
             });
         });
