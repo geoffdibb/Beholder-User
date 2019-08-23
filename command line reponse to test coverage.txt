@@ -1,0 +1,136 @@
+C:\Users\lshil\Documents\BEHOLDER\BEHOLDER-User>npm run coverage
+
+> beholderuser@1.0.0 coverage C:\Users\lshil\Documents\BEHOLDER\BEHOLDER-User
+> nyc npm run test
+
+
+> beholderuser@1.0.0 test C:\Users\lshil\Documents\BEHOLDER\BEHOLDER-User
+> node postmanTest.js
+
+(node:19024) DeprecationWarning: current URL string parser is deprecated, and will be removed in a future version. To use the new parser, pass option { useNewUrlParser: true } to MongoClient.connect.
+server running on port 5001
+newman
+
+BAE
+
+→ registerUser - new details
+  POST http://localhost:5001/registerUser  baby3
+|Connected to MongoDB
+\user created
+{ _id: 5d5fc1fb9269994a50ec5ae6,
+  username: 'baby3',
+  password:
+   '$2b$12$wAP6trkaBgfqbUYgD2AgretzNDFSuZUI./4Qyv0GfpoGAhdJUAcfS',
+  __v: 0 }
+{ username: 'baby3' }
+user created in db
+POST /registerUser 200 623.828 ms - 26
+[200 OK, 270B, 710ms]
+  √  response is ok
+  √  response should be okay to process
+  √  response must be valid and have a body
+
+→ registerUser - details already exist
+  POST http://localhost:5001/registerUser  admin
+username  taken
+username  taken
+POST /registerUser 403 13.034 ms - 15
+[403 Forbidden, 258B, 21ms]
+  √  response is ok
+  √  response should be okay to process
+  √  response must be valid and have a body
+
+→ registerUser - missing details
+  POST http://localhost:5001/registerUser  Missing credentials
+POST /registerUser 403 1.909 ms - 19
+[403 Forbidden, 263B, 9ms]
+  √  response is ok
+  √  response should be okay to process
+  √  response must be valid and have a body
+
+→ loginUser - correct details
+  POST http://localhost:5001/loginUser  { _id: 5d5fb54c4cd6314ad02b99b8,
+  username: 'Bert',
+  password:
+   '$2b$12$JAXlR8n4G4YVpfr7rKUjZ.q6.WLNC51Zi7P4ysSm7osJ78jaIgc.u',
+  __v: 0 }
+\user found & authenticated
+POST /loginUser 200 258.355 ms - 230
+[200 OK, 475B, 269ms]
+  √  response is ok
+  √  response should be okay to process
+  √  response must be valid and have a body
+
+→ loginUser - missing details
+  POST http://localhost:5001/loginUser  Missing credentials
+POST /loginUser 403 1.284 ms - 19
+[403 Forbidden, 263B, 14ms]
+  √  response is ok
+  √  response should be okay to process
+  √  response must be valid and have a body
+
+→ getauditrequestlog/Bert
+  GET http://localhost:5001/getauditrequestlog/Bert  GET /getauditrequestlog/Bert 401 0.672 ms - -
+[401 Unauthorized, 164B, 12ms]
+  √  response is ok
+  √  response should be okay to process
+  √  response must be valid and have a body
+
+→ getsearchlog/Bert
+  GET http://localhost:5001/getsearchlog/Bert  GET /getsearchlog/Bert 401 0.336 ms - 13
+[401 Unauthorized, 259B, 4ms]
+  √  response is ok
+  √  response should be okay to process
+  √  response must be valid and have a body
+
+→ getaudituseraccesslog/Bert
+  GET http://localhost:5001/getaudituseraccesslog/Bert  GET /getaudituseraccesslog/Bert 401 0.883 ms - 13
+[401 Unauthorized, 259B, 11ms]
+  √  response is ok
+  √  response should be okay to process
+  √  response must be valid and have a body
+
+→ loginUser - incorrect details
+  POST http://localhost:5001/loginUser  Missing credentials
+POST /loginUser 403 0.904 ms - 19
+[403 Forbidden, 263B, 12ms]
+  √  response is ok
+  √  response should be okay to process
+  √  response must be valid and have a body
+
+→ search/Bert/name/lucy
+  GET http://localhost:5001/search/Bert/name/lucy  GET /search/Bert/name/lucy 401 0.367 ms - 13
+[401 Unauthorized, 259B, 5ms]
+  √  response is ok
+  √  response should be okay to process
+  √  response must be valid and have a body
+
+→ findUser/Bert
+  GET http://localhost:5001/findUser/Bert  GET /findUser/Bert 200 5.269 ms - 134
+[200 OK, 379B, 12ms]
+  √  response is ok
+  √  response should be okay to process
+  √  response must be valid and have a body
+All tests passed
+------------------------|----------|----------|----------|----------|-------------------|
+File                    |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+------------------------|----------|----------|----------|----------|-------------------|
+All files               |    73.91 |       50 |       78 |    74.15 |                   |
+ BEHOLDER-User          |    73.08 |     62.5 |    66.67 |       74 |                   |
+  postmanTest.js        |     38.1 |       50 |    66.67 |       40 |... 20,21,22,24,25 |
+  server.js             |    96.77 |      100 |    66.67 |    96.67 |                32 |
+ BEHOLDER-User/config   |    83.33 |     62.5 |       90 |    83.33 |                   |
+  jwtConfig.js          |      100 |      100 |      100 |      100 |                   |
+  keys.js               |      100 |      100 |      100 |      100 |                   |
+  passport.js           |     82.5 |     62.5 |       90 |     82.5 |... 67,68,75,95,97 |
+ BEHOLDER-User/models   |      100 |      100 |      100 |      100 |                   |
+  user.js               |      100 |      100 |      100 |      100 |                   |
+ BEHOLDER-User/routes   |    69.44 |    44.12 |    76.47 |    69.44 |                   |
+  auditRequestlog.js    |    57.14 |       25 |       60 |    57.14 | 11,12,14,17,20,21 |
+  auditSearchLog.js     |    57.14 |       25 |       60 |    57.14 | 10,11,13,16,19,20 |
+  auditUserAccessLog.js |    57.14 |       25 |       60 |    57.14 | 10,11,13,16,19,20 |
+  findUsers.js          |    66.67 |       50 |      100 |    66.67 |     9,20,21,25,26 |
+  loginUser.js          |    88.89 |    66.67 |      100 |    88.89 |             11,16 |
+  registerUser.js       |    94.12 |       75 |      100 |    94.12 |                 8 |
+  search.js             |    56.25 |    33.33 |       60 |    56.25 |... 14,16,19,22,23 |
+------------------------|----------|----------|----------|----------|-------------------|

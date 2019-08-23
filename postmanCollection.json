@@ -6,69 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:5001/getauditrequestlog/Bert",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "08550ebc-4058-4f98-a72a-c348a595824d",
-						"exec": [
-							"// example using pm.response.to.have\r",
-							"pm.test(\"response is ok\", function () {\r",
-							"    pm.response.to.have.status(401);\r",
-							"});\r",
-							"\r",
-							"// example using response assertions\r",
-							"pm.test(\"response should be okay to process\", function () {\r",
-							"    pm.response.to.be.error;\r",
-							"});\r",
-							"\r",
-							"// // example using pm.response.to.be*\r",
-							"// pm.test(\"response must be valid and have a body\", function () {\r",
-							"//      pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
-							"//      // assert that the response has a valid JSON body\r",
-							"//      pm.response.to.be.withBody;\r",
-							"//      pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
-							"// });"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"name": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"username\": \"admin1\",\n\t\"password\": \"password\"\n}"
-				},
-				"url": {
-					"raw": "http://localhost:5001/getauditrequestlog/Bert",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"getauditrequestlog",
-						"Bert"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:5001/registerUser",
+			"name": "registerUser - new details",
 			"event": [
 				{
 					"listen": "test",
@@ -114,7 +52,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\": \"bexwtrhcexthehy\",\n\t\"password\": \"password\"\n}"
+					"raw": "{\n\t\"username\": \"baby3\",\n\t\"password\": \"password\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:5001/registerUser",
@@ -125,6 +63,545 @@
 					"port": "5001",
 					"path": [
 						"registerUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registerUser - details already exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ccb7abd7-4953-42ed-ae38-ec3b73ec34df",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'username taken' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(403); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"admin\",\n\t\"password\": \"password\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5001/registerUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"registerUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registerUser - missing details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "617867f3-d9c3-42d9-a03c-88d10dfa3044",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'Missing credentials' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(403); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"\",\n\t\"password\": \"\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5001/registerUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"registerUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "loginUser - correct details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5bd1d824-56da-4a10-8161-420cf30d5e53",
+						"exec": [
+							"// example using pm.response.to.have\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// example using response assertions\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.not.be.error;\r",
+							"    pm.response.to.have.jsonBody({ message: 'user created' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"// example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"Bert\",\n\t\"password\": \"password\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5001/loginUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"loginUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "loginUser - missing details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "df9ca9ba-30b5-4b1d-a6d6-a50ad95ea13e",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'Missing credentials' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(403); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"\",\n\t\"password\":\"\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5001/loginUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"loginUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getauditrequestlog/Bert",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "08550ebc-4058-4f98-a72a-c348a595824d",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'No auth token' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(401); \r",
+							"     pm.response.to.not.have.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5001/getauditrequestlog/Bert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"getauditrequestlog",
+						"Bert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getsearchlog/Bert",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d90c027f-6c9d-4575-ae63-91b4c1e883e1",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'No auth token' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(401); \r",
+							"     pm.response.to.have.withBody;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5001/getsearchlog/Bert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"getsearchlog",
+						"Bert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getaudituseraccesslog/Bert",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "54973460-1d17-41f8-bcaf-0b5d017c50fe",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'No auth token' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(401); \r",
+							"     pm.response.to.have.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:5001/getaudituseraccesslog/Bert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"getaudituseraccesslog",
+						"Bert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "loginUser - incorrect details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f9076c4a-c2b5-4010-bef0-3c9c83ea886f",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'Missing credentials' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(403); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"Bert\",\n\t\"pasword\": \"pass\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5001/loginUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"loginUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search/Bert/name/lucy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7a5be46b-2d29-44f2-961d-08494768fb6d",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'No auth token' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(401); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5001/search/Bert/name/lucy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"search",
+						"Bert",
+						"name",
+						"lucy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findUser/Bert",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "25735f57-eab3-4f4c-97d4-67f77b8901ce",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'user found in db' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.be.ok; \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjU1NjE1MSwiZXhwIjoxNTY2NTU5NzUxfQ.elCGqfcEi3muOIeQW4ndd1fkAjxFhwAqAn--A1Bylyw",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/findUser/Bert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"findUser",
+						"Bert"
 					]
 				}
 			},

@@ -2,28 +2,13 @@ const newman = require('newman');
 const collection = require('./postmanCollection.json')
 const treeify = require('treeify');
 const { app } = require('./server');
-// const environment = require('../collections/environment.json');
-
-// newman.run({
-//     collection:
-//     require('./postman.json'), reporters: 'cli',
-// })
-
-// const server = app.listen(
-//   port,
-//   () => {
-//     console.log(`Test server listing at port ${port}`);
-//   },
-// );
 
 newman.run({
   collection,
-//   environment,
   color: true,
   reporters: ['cli']
 }).on('start', (err, args) => {
 }).on('done', (err, summary) => {
-//   server.close(() => console.log('Test server Terminated'));
   if (err || summary.run.failures.length) {
     const failureCount = summary.run.failures.length;
     summary.run.failures.forEach((element, index) => {
@@ -39,7 +24,7 @@ newman.run({
     console.error(treeify.asTree(summary.run.stats, true));
     process.exit(1);
   } else {
-    console.log('🍺🍺 🍺🍺 🍺🍺 🍺🍺 🍺🍺');
+    console.log('All tests passed');
     process.exit(0);
   }
 });
