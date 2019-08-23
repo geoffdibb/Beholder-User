@@ -19,8 +19,7 @@ module.exports = app => {
         }
       } else {
         req.logIn(users, () => {
-          User.findOne({username:req.body.username}).then(user => {
-              console.log(user)
+          User.findOne({ username: req.body.username }).then(user => {
             const token = jwt.sign({ id: user._id }, jwtSecret.secret, {
               expiresIn: 60 * 60,
             });

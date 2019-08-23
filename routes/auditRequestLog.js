@@ -1,4 +1,3 @@
-
 const passport = require("passport");
 const User = require("../models/user");
 const axios = require("axios");
