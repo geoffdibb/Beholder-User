@@ -5,7 +5,7 @@ const axios = require("axios");
 
 module.exports = (app) => {
     app.get('/getauditrequestlog/:username', (req, res, next) => {
-        passport.authenticate('jwt', { session: false }, (user, info) => {
+        passport.authenticate('jwt', { session: false }, (err, user, info) => {
             if (info !== undefined) {
                 res.status(401).send(info.message);
             } else if (user.username === req.params.username) {

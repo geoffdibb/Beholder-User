@@ -52,7 +52,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\": \"baby3\",\n\t\"password\": \"password\"\n}"
+					"raw": "{\n\t\"username\": \"baby453\",\n\t\"password\": \"password\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:5001/registerUser",
@@ -310,7 +310,7 @@
 							"\r",
 							"pm.test(\"response must be valid and have a body\", function () {\r",
 							"     pm.response.to.have.status(401); \r",
-							"     pm.response.to.not.have.withBody;\r",
+							"     pm.response.to.have.withBody;\r",
 							"});"
 						],
 						"type": "text/javascript"

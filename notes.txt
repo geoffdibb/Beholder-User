@@ -1,6 +1,0 @@
-audit request log 
-http://localhost:5001/getauditrequestlog/Bert
-
-returns no body
-
-whereas the other logs return No auth token
