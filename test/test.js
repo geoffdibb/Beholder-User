@@ -24,12 +24,8 @@ describe('auditRequestLog', function () {
             // })
 
             chai.request(app).get('http://localhost:5001/getauditrequestlog/Bert').end((err, res) => {
-
-
                 expect(200, "ok");
-
                 done();
-
             })
         })
     })
