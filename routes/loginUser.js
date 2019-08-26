@@ -1,8 +1,8 @@
-
 const jwt = require("jsonwebtoken");
 const passport = require("passport");
 const jwtSecret = require("../config/jwtConfig");
 const User = require("../models/user");
+const axios = require("axios");
 
 module.exports = app => {
     app.post('/loginUser', (req, res, next) => {
