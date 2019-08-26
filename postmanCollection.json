@@ -52,7 +52,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\": \"baby453\",\n\t\"password\": \"password\"\n}"
+					"raw": "{\n\t\"username\": \"babyqxa4eatcsvu4rchtr53\",\n\t\"password\": \"password\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:5001/registerUser",
@@ -583,7 +583,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjU1NjE1MSwiZXhwIjoxNTY2NTU5NzUxfQ.elCGqfcEi3muOIeQW4ndd1fkAjxFhwAqAn--A1Bylyw",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
 						"type": "text"
 					},
 					{
@@ -602,6 +602,105 @@
 					"path": [
 						"findUser",
 						"Bert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findUser/lucy - doesnt exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "88c358d5-702a-4041-a252-c8c5bebe2923",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(401);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'No auth token' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(401); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5001/findUser/lucy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"findUser",
+						"lucy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "findUser/lucy - with bert token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4bc2d34d-dee9-41a1-9aac-da5e09974b8f",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'Username and jwt token do not match' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(403); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/findUser/lucy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"findUser",
+						"lucy"
 					]
 				}
 			},
