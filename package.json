@@ -6,7 +6,8 @@
   "scripts": {
     "server": "node server.js",
     "test": "node postmanTest.js",
-    "coverage": "nyc npm run test"
+    "coverage": "nyc npm run test",
+    "report": "nyc --reporter=html report"
   },
   "author": "",
   "license": "ISC",
@@ -46,6 +47,10 @@
     "nyc": "^14.1.1"
   },
   "nyc":{
-    "exclude": "./postmanTest.js"
+    "exclude": [
+      "node_modules",
+      "coverage",
+      "postmanTest"
+    ]
   }
 }

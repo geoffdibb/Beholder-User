@@ -52,7 +52,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\": \"babyqxa4eatcsdvsecrvu4rchtr53\",\n\t\"password\": \"password\"\n}"
+					"raw": "{\n\t\"username\": \"postman4\",\n\t\"password\": \"password\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:5001/registerUser",
@@ -434,7 +434,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgyMjY5MSwiZXhwIjoxNTY2ODI2MjkxfQ.HkPTCBU2bbawJX_Cy01QfK7lO6axGtMqbpRFCMZJe_U",
 						"type": "text"
 					},
 					{
@@ -467,7 +467,7 @@
 						"id": "1e5f269c-53d0-4da2-b0fa-7a0788a0930c",
 						"exec": [
 							"pm.test(\"response is ok\", function () {\r",
-							"    pm.response.to.have.status(501);\r",
+							"    pm.response.to.have.status(403);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"response should be okay to process\", function () {\r",
@@ -476,7 +476,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"response must be valid and have a body\", function () {\r",
-							"     pm.response.to.have.status(501); \r",
+							"     pm.response.to.have.status(403); \r",
 							"     pm.response.to.be.withBody;\r",
 							"});"
 						],
@@ -489,7 +489,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgyMjY5MSwiZXhwIjoxNTY2ODI2MjkxfQ.HkPTCBU2bbawJX_Cy01QfK7lO6axGtMqbpRFCMZJe_U",
 						"type": "text"
 					},
 					{
@@ -589,7 +589,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgyMjY5MSwiZXhwIjoxNTY2ODI2MjkxfQ.HkPTCBU2bbawJX_Cy01QfK7lO6axGtMqbpRFCMZJe_U",
 						"type": "text"
 					},
 					{
@@ -622,7 +622,7 @@
 						"id": "1e5f269c-53d0-4da2-b0fa-7a0788a0930c",
 						"exec": [
 							"pm.test(\"response is ok\", function () {\r",
-							"    pm.response.to.have.status(501);\r",
+							"    pm.response.to.have.status(403);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"response should be okay to process\", function () {\r",
@@ -631,7 +631,7 @@
 							"});\r",
 							"\r",
 							"pm.test(\"response must be valid and have a body\", function () {\r",
-							"     pm.response.to.have.status(501); \r",
+							"     pm.response.to.have.status(403); \r",
 							"     pm.response.to.be.withBody;\r",
 							"});"
 						],
@@ -644,7 +644,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgyMjY5MSwiZXhwIjoxNTY2ODI2MjkxfQ.HkPTCBU2bbawJX_Cy01QfK7lO6axGtMqbpRFCMZJe_U",
 						"type": "text"
 					},
 					{
@@ -757,7 +757,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgyMjY5MSwiZXhwIjoxNTY2ODI2MjkxfQ.HkPTCBU2bbawJX_Cy01QfK7lO6axGtMqbpRFCMZJe_U",
 						"type": "text"
 					},
 					{
@@ -812,7 +812,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgyMjY5MSwiZXhwIjoxNTY2ODI2MjkxfQ.HkPTCBU2bbawJX_Cy01QfK7lO6axGtMqbpRFCMZJe_U",
 						"type": "text"
 					},
 					{
@@ -913,7 +913,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgyMjY5MSwiZXhwIjoxNTY2ODI2MjkxfQ.HkPTCBU2bbawJX_Cy01QfK7lO6axGtMqbpRFCMZJe_U",
 						"type": "text"
 					},
 					{
@@ -970,7 +970,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgyMjY5MSwiZXhwIjoxNTY2ODI2MjkxfQ.HkPTCBU2bbawJX_Cy01QfK7lO6axGtMqbpRFCMZJe_U",
 						"type": "text"
 					},
 					{
@@ -1027,7 +1027,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgyMjY5MSwiZXhwIjoxNTY2ODI2MjkxfQ.HkPTCBU2bbawJX_Cy01QfK7lO6axGtMqbpRFCMZJe_U",
 						"type": "text"
 					},
 					{
@@ -1126,7 +1126,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgyMjY5MSwiZXhwIjoxNTY2ODI2MjkxfQ.HkPTCBU2bbawJX_Cy01QfK7lO6axGtMqbpRFCMZJe_U",
 						"type": "text"
 					},
 					{
