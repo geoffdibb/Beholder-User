@@ -8,7 +8,6 @@ module.exports = app => {
     app.post('/loginUser', (req, res, next) => {
         axios.post("http://localhost:8083/userLogin", req.body.username)
             .then(response => {
-                console.log("sent log")
             })
             .catch(error => {
                 console.log(error);

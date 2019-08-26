@@ -292,6 +292,60 @@
 			"response": []
 		},
 		{
+			"name": "loginUser - incorrect details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f9076c4a-c2b5-4010-bef0-3c9c83ea886f",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'Missing credentials' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(403); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"Bert\",\n\t\"pasword\": \"pass\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5001/loginUser",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"loginUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "getauditrequestlog/Bert",
 			"event": [
 				{
@@ -350,6 +404,116 @@
 			"response": []
 		},
 		{
+			"name": "getauditrequestlog/Bert - with token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "059ff723-987d-4a23-8f80-917ef8af5028",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(501);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'Unable to connect to Beholder Audit API' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(501); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/getauditrequestlog/Bert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"getauditrequestlog",
+						"Bert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getauditrequestlog/lucy - with berts token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e5f269c-53d0-4da2-b0fa-7a0788a0930c",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(501);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'Username and jwt token do not match' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(501); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/getauditrequestlog/lucy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"getauditrequestlog",
+						"lucy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "getsearchlog/Bert",
 			"event": [
 				{
@@ -389,6 +553,116 @@
 					"path": [
 						"getsearchlog",
 						"Bert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getsearchlog/Bert - with token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "059ff723-987d-4a23-8f80-917ef8af5028",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(501);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'Unable to connect to Beholder Audit API' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(501); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/getsearchlog/Bert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"getsearchlog",
+						"Bert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getsearchlog/lucy - with berts token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e5f269c-53d0-4da2-b0fa-7a0788a0930c",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(501);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'Username and jwt token do not match' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(501); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/getsearchlog/lucy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"getsearchlog",
+						"lucy"
 					]
 				}
 			},
@@ -453,19 +727,74 @@
 			"response": []
 		},
 		{
-			"name": "loginUser - incorrect details",
+			"name": "getaudituseraccesslog/Bert - with token",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "f9076c4a-c2b5-4010-bef0-3c9c83ea886f",
+						"id": "059ff723-987d-4a23-8f80-917ef8af5028",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(501);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'Unable to connect to Beholder Audit API' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(501); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/getaudituseraccesslog/Bert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"getaudituseraccesslog",
+						"Bert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getaudituseraccesslog/lucy - with berts token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1e5f269c-53d0-4da2-b0fa-7a0788a0930c",
 						"exec": [
 							"pm.test(\"response is ok\", function () {\r",
 							"    pm.response.to.have.status(403);\r",
 							"});\r",
 							"\r",
 							"pm.test(\"response should be okay to process\", function () {\r",
-							"    pm.response.to.have.jsonBody({ message: 'Missing credentials' });\r",
+							"    pm.response.to.have.jsonBody({ message: 'Username and jwt token do not match' });\r",
 							"    pm.response.to.not.have.jsonBody(\"error\");\r",
 							"});\r",
 							"\r",
@@ -479,28 +808,29 @@
 				}
 			],
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
+						"key": "Authorization",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"type": "text"
+					},
+					{
 						"key": "Content-Type",
-						"name": "Content-Type",
 						"value": "application/json",
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"username\": \"Bert\",\n\t\"pasword\": \"pass\"\n}"
-				},
 				"url": {
-					"raw": "http://localhost:5001/loginUser",
+					"raw": "http://localhost:5001/getaudituseraccesslog/lucy",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "5001",
 					"path": [
-						"loginUser"
+						"getaudituseraccesslog",
+						"lucy"
 					]
 				}
 			},
@@ -545,6 +875,120 @@
 					"path": [
 						"search",
 						"Bert",
+						"name",
+						"lucy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search/Bert/name/lucy - with token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d19cf62-ee18-4165-b7b8-88ba4d649f2d",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(501);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'Unable to connect to Beholder Search API' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(501); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/search/Bert/name/lucy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"search",
+						"Bert",
+						"name",
+						"lucy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search/lucy/name/lucy - with bert token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "358b523e-2f2e-41be-b408-4ed7480bb628",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'Username and jwt token do not match' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(403); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/search/lucy/name/lucy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"search",
+						"lucy",
 						"name",
 						"lucy"
 					]
@@ -700,120 +1144,6 @@
 					"port": "5001",
 					"path": [
 						"findUser",
-						"lucy"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "search/Bert/name/lucy - with token",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "8d19cf62-ee18-4165-b7b8-88ba4d649f2d",
-						"exec": [
-							"pm.test(\"response is ok\", function () {\r",
-							"    pm.response.to.have.status(501);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"response should be okay to process\", function () {\r",
-							"    pm.response.to.have.jsonBody({ message: 'Unable to connect to Beholder Search API' });\r",
-							"    pm.response.to.not.have.jsonBody(\"error\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"response must be valid and have a body\", function () {\r",
-							"     pm.response.to.have.status(501); \r",
-							"     pm.response.to.be.withBody;\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:5001/search/Bert/name/lucy",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"search",
-						"Bert",
-						"name",
-						"lucy"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "search/lucy/name/lucy - with bert token",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "358b523e-2f2e-41be-b408-4ed7480bb628",
-						"exec": [
-							"pm.test(\"response is ok\", function () {\r",
-							"    pm.response.to.have.status(403);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"response should be okay to process\", function () {\r",
-							"    pm.response.to.have.jsonBody({ message: 'Username and jwt token do not match' });\r",
-							"    pm.response.to.not.have.jsonBody(\"error\");\r",
-							"});\r",
-							"\r",
-							"pm.test(\"response must be valid and have a body\", function () {\r",
-							"     pm.response.to.have.status(403); \r",
-							"     pm.response.to.be.withBody;\r",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
-						"type": "text"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:5001/search/lucy/name/lucy",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5001",
-					"path": [
-						"search",
-						"lucy",
-						"name",
 						"lucy"
 					]
 				}
