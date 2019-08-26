@@ -52,7 +52,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\": \"babyqxa4eatcsvu4rchtr53\",\n\t\"password\": \"password\"\n}"
+					"raw": "{\n\t\"username\": \"babyqxa4eatcsdvsecrvu4rchtr53\",\n\t\"password\": \"password\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:5001/registerUser",
@@ -700,6 +700,120 @@
 					"port": "5001",
 					"path": [
 						"findUser",
+						"lucy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search/Bert/name/lucy - with token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d19cf62-ee18-4165-b7b8-88ba4d649f2d",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(501);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'Unable to connect to Beholder Search API' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(501); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/search/Bert/name/lucy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"search",
+						"Bert",
+						"name",
+						"lucy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search/lucy/name/lucy - with bert token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "358b523e-2f2e-41be-b408-4ed7480bb628",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(403);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response should be okay to process\", function () {\r",
+							"    pm.response.to.have.jsonBody({ message: 'Username and jwt token do not match' });\r",
+							"    pm.response.to.not.have.jsonBody(\"error\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     pm.response.to.have.status(403); \r",
+							"     pm.response.to.be.withBody;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkNWZiNTRjNGNkNjMxNGFkMDJiOTliOCIsImlhdCI6MTU2NjgxMTI3MywiZXhwIjoxNTY2ODE0ODczfQ.1A2JKH0wXRYtPDWRQ1oeBczO0nhUC33UYmS6YZzpTzU",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/search/lucy/name/lucy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"search",
+						"lucy",
+						"name",
 						"lucy"
 					]
 				}
