@@ -8,11 +8,11 @@ module.exports = function validateusername(User) {
     User.username = !isEmpty(User.username) ? User.username : "";
 
     if (!Validator.isAlphanumeric(User.username)) {
-        errors.username = "username is invalid";
+        errors.username = "Username is invalid";
     }
 
     if (Validator.isEmpty(User.username)) {
-        errors.username = "username is required";
+        errors.username = "Username is required";
     }
 
     return {
