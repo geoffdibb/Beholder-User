@@ -6,7 +6,7 @@ const axios = require("axios");
 
 module.exports = app => {
     app.post('/loginUser', (req, res, next) => {
-        axios.post("http://localhost:8083/userLogin", req.body.username)
+        axios.post("http://localhost:8083/beholder/userLogin", req.body.username)
             .then(response => {
             })
             .catch(error => {
