@@ -24,7 +24,7 @@ require('./routes/findUsers')(app);
 require('./routes/search')(app);
 require('./routes/auditSearchLog')(app);
 require('./routes/auditUserAccessLog')(app);
-require('./routes/auditRequestlog')(app);
+require('./routes/auditRequestLog')(app);
 
 mongoose
   .connect(db)
