@@ -9,7 +9,8 @@ module.exports = (app) => {
             if (info !== undefined) {
                 res.status(401).send(info.message);
             } else if (user.username === req.params.username) {
-                axios.get("http://localhost:8083/beholder/getAuditRequestLog/" + req.params.username)
+                // axios.get("http://localhost:8083/beholder/getAuditRequestLog/" + req.params.username)
+                axios.get("http://localhost:8083/beholder/getAuditRequestLog/")
                     .then(response => {
                         res.status(200).send(response.data);
                     })
