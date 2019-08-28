@@ -5,8 +5,8 @@ const User = require("../models/user");
 const axios = require("axios");
 
 module.exports = app => {
-    app.post('/loginUser', (req, res, next) => {
-        axios.post("http://localhost:8083/userLogin", req.body.username)
+    app.post('/user/loginUser', (req, res, next) => {
+        axios.post("/core:8083/userLogin", req.body.username)
             .then(response => {
             })
             .catch(error => {

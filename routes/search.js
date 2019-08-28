@@ -3,7 +3,7 @@ const User = require("../models/user");
 const axios = require("axios");
 
 module.exports = (app) => {
-    app.get('/search/:username/:category/:searchTerm', (req, res, next) => {
+    app.get('/user/search/:username/:category/:searchTerm', (req, res, next) => {
         passport.authenticate('jwt', { session: false }, (err, user, info) => {
             if (err) {
                 console.log(err);
@@ -11,7 +11,7 @@ module.exports = (app) => {
             if (info !== undefined) {
                 res.status(401).send(info.message);
             } else if (user.username === req.params.username) {
-                axios.get("http://localhost:8083/beholder/search/" + req.params.username + "/" + req.params.category + "/" + req.params.searchTerm)
+                axios.get("/core:8083/beholder/search/" + req.params.username + "/" + req.params.category + "/" + req.params.searchTerm)
                     .then(Response => {
                         res.status(200).send(response.data);
                     })
