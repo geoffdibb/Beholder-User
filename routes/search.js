@@ -11,7 +11,7 @@ module.exports = (app) => {
             if (info !== undefined) {
                 res.status(401).send(info.message);
             } else if (user.username === req.params.username) {
-                axios.get("/core:8083/beholder/search/" + req.params.username + "/" + req.params.category + "/" + req.params.searchTerm)
+                axios.get("http://core:8083/beholder/search/" + req.params.username + "/" + req.params.category + "/" + req.params.searchTerm)
                     .then(Response => {
                         res.status(200).send(response.data);
                     })
