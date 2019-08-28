@@ -5,8 +5,8 @@ const User = require("../models/user");
 const axios = require("axios");
 
 module.exports = app => {
-    app.post('/user/loginUser', (req, res, next) => {
-        axios.post("/core:8083/userLogin", req.body.username)
+    app.post('/loginUser', (req, res, next) => {
+        axios.post("http://core:8083/beholder/userLogin", req.body)
             .then(response => {
             })
             .catch(error => {
@@ -32,7 +32,7 @@ module.exports = app => {
                         res.status(200).send({
                             auth: true,
                             token,
-                            message: 'User athenticated and logged in',
+                            message: 'User authenticated and logged in',
                         });
                     });
                 });
