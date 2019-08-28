@@ -8,7 +8,7 @@ module.exports = (app) => {
             if (info !== undefined) {
                 res.status(401).send(info.message);
             } else if (user.username === req.params.username) {
-                axios.get("http://localhost:8083/beholder/getSearchLogs/" + req.params.username)
+                axios.get("/core:8083/beholder/getSearchLogs/" + req.params.username)
                     .then(response => {
                         res.status(200).send(response.data);
                     })
