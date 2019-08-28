@@ -5,7 +5,7 @@ const User = require("../models/user");
 const axios = require("axios");
 
 module.exports = app => {
-    app.post('/loginUser', (req, res, next) => {
+    app.post('/user/loginUser', (req, res, next) => {
         axios.post("http://core:8083/beholder/userLogin", req.body)
             .then(response => {
             })
