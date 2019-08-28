@@ -12,11 +12,7 @@ module.exports = (app) => {
                 res.status(401).send(info.message);
             } else if (user.username === req.params.username) {
                 axios.get("http://core:8083/beholder/search/" + req.params.username + "/" + req.params.category + "/" + req.params.searchTerm)
-<<<<<<< HEAD
-                    .then(Response => {
-=======
                     .then(response => {
->>>>>>> d6bca0ce4cf658d251c4931f8cb423af2cb77aed
                         res.status(200).send(response.data);
                     })
                     .catch(err => {
