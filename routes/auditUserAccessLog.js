@@ -3,7 +3,7 @@ const User = require("../models/user");
 const axios = require("axios");
 
 module.exports = (app) => {
-    app.get('/getaudituseraccesslog/:username', (req, res, next) => {
+    app.get('/user/getaudituseraccesslog/:username', (req, res, next) => {
         passport.authenticate('jwt', { session: false }, (err, user, info) => {
             if (info !== undefined) {
                 res.status(401).send(info.message);
