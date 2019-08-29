@@ -4,13 +4,13 @@ const axios = require("axios");
 
 
 module.exports = (app) => {
-    app.get('/getauditrequestlog/:username', (req, res, next) => {
+    app.get('/user/getauditrequestlog/:username', (req, res, next) => {
         passport.authenticate('jwt', { session: false }, (err, user, info) => {
             if (info !== undefined) {
                 res.status(401).send(info.message);
             } else if (user.username === req.params.username) {
                 // axios.get("http://localhost:8083/beholder/getAuditRequestLog/" + req.params.username)
-                axios.get("/core:8083/beholder/getAuditRequestLog/")
+                axios.get("http://core:8083/beholder/getAuditRequestLog/")
                     .then(response => {
                         res.status(200).send(response.data);
                     })
