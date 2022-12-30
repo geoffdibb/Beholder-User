@@ -43,7 +43,7 @@
     "validator": "^11.1.0"
   },
   "devDependencies": {
-    "mocha": "^6.2.0",
+    "mocha": "^10.2.0",
     "nyc": "^14.1.1"
   },
   "nyc": {
